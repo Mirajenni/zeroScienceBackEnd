@@ -1,6 +1,6 @@
 # Desafio Orbital Sky
 Feito para o NASA Space Apps
->Grupo:
+>**Grupo:**
 Camila Holanda\
 Gabriel Amorim\
 Jennifer Calazans\
