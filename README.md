@@ -1,5 +1,5 @@
 # Desafio Orbital Sky
-Desafio NASA Space Apps
+Feito para o NASA Space Apps
 >Grupo:
 Camila Holanda\
 Gabriel Amorim\
