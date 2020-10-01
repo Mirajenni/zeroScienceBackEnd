@@ -1,5 +1,5 @@
 # Desafio Orbital Sky
-Feito para o NASA Space Apps\
+Feito para o evento NASA Space Apps
 
 Grupo:
 >Camila Holanda\
