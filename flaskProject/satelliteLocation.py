@@ -85,9 +85,3 @@ def get_all(filename, debug=False):
     IDs = read_ids(filename, debug)
     all_data = [get_single(ID, debug) for ID in IDs]
     return all_data
-
-@app.route('/getSatelitesFile')
-def prepare_sat():
-    fname = "test_list.txt"
-    data = get_all(fname, debug=True)
-    return json.dumps(data)
