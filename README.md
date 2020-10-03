@@ -1,7 +1,7 @@
 # Desafio Orbital Sky
 Feito para o evento NASA Space Apps
 
-Grupo:
+Grupo Zero Science:
 >Camila Holanda\
 Gabriel Amorim\
 Jennifer Calazans\
