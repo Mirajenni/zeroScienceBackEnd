@@ -1,0 +1,8 @@
+
+# Location of METS
+observer_lat = -8.05389
+observer_lng = -34.88111
+observer_alt = 74.042
+
+# Desired time period and minimum pass duration
+seconds = 1
