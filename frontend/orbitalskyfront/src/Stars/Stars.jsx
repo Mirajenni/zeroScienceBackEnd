@@ -5,6 +5,10 @@ export default class Stars extends Component {
   constructor() {
     super();
 
+    this.state = {
+      disaster: false,
+    };
+
     this.handleLoad = this.handleLoad.bind(this);
   }
 
@@ -119,10 +123,6 @@ export default class Stars extends Component {
     }
 
     animation();
-
-    setTimeout(function () {
-      doAnim = false;
-    }, 3000);
   }
 
   render() {
