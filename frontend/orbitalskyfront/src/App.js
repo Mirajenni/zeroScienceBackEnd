@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import Stars from "./Stars/Stars";
 import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -17,7 +18,8 @@ function App() {
         >
           <Link to="/NewRoute">Ir para Nova Rota</Link>
         </a>
-      </header>
+      </header> */}
+      <Stars />
     </div>
   );
 }
