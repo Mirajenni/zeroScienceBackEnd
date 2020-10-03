@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import { Link } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          <Link to="/NewRoute">Ir para Nova Rota</Link>
         </a>
       </header>
     </div>
