@@ -1,4 +1,4 @@
->Comandos:
+# Comandos:
 
 django-admin startproject djangoproject\
 cd djangoproject/\
