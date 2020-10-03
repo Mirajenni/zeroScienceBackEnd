@@ -27,5 +27,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     url('admin/', admin.site.urls),
+    url('', views.loginList.as_view()),
     url('login/', views.loginList.as_view()),
 ]
