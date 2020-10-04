@@ -5,6 +5,10 @@ import toml
 from pprint import pprint
 from sys import argv, exit
 from os import path
+from inspect import currentframe, getframeinfo
+from flask import Flask
+import json
+app = Flask(__name__)
 
 '''# Load N2YO API key from file (get your own key by registering at N2YO.com)
 if path.exists("N2YO_API_KEY.txt"):
@@ -14,6 +18,8 @@ else:
     exit()'''
 
 # Load basic query parameters from 'config.toml'
+frameinfo = getframeinfo(currentframe())
+
 if path.exists("config.toml"):
     base_params = toml.loads(open("config.toml").read())
 else:
@@ -24,6 +30,10 @@ else:
 BASE_URL = "https://www.n2yo.com/rest/v1/satellite/"
 #TEMPLATE = "visualpasses/{id:d}/{observer_lat:.5f}/{observer_lng:.5f}/{observer_alt:2f}/{days:d}/{min_visibility:d}"
 TEMPLATE = "/positions/{id:d}/{observer_lat:.5f}/{observer_lng:.5f}/{observer_alt:2f}/{seconds:d}"
+
+@app.route('/')
+def index():
+    return 'Página Login'
 
 def parse_query(params, debug=False):
     " Produce URL from parameter dictionary."
@@ -39,10 +49,11 @@ def retrieve_data(QUERY_URL, debug=False):
     r = requests.get(QUERY_URL, params={"apiKey" : API_KEY})
     if r.status_code == requests.codes.ok:
         if debug:
-            print("Success.")
+            print("Success.", frameinfo.lineno)
         return r.json()
     elif debug:
         print("Failed! (status code {})".format(r.status_code))
+        return "error :/"
     return "{}"
 
 def read_ids(filename, debug=False):
@@ -63,7 +74,7 @@ def get_single(ID, debug=False):
     query_params = base_params.copy() #pegou os dados de TOML
     query_params["id"] = ID
     if debug:
-        print("Query parameters:")
+        print("Query parameters:\n")
         pprint(query_params)
     URL = parse_query(query_params, debug)
     data = retrieve_data(URL, debug)
@@ -74,9 +85,3 @@ def get_all(filename, debug=False):
     IDs = read_ids(filename, debug)
     all_data = [get_single(ID, debug) for ID in IDs]
     return all_data
-
-if __name__=="__main__":
-    fname = argv[1]
-    data = get_all(fname, debug=True)
-    for result in data:
-        pprint(result)

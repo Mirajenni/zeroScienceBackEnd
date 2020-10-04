@@ -1,25 +1,46 @@
 from flask import Flask
+import satelliteLocation as sl
+import json
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return 'Página Login'
 
-@app.route('/main_page')
-def main():
-    return 'Página Principal da Nave'
+satellite_list = []
+class Satellite:
+    def __init__(self, id, name, lat, lon, alt):
+        self.id = id
+        self.name = name
+        self.lat = lat
+        self.lon = lon
+        self.alt = alt
 
-@app.route('/user/<username>')
-def show_user_profile(username):
-    # show the user profile for that user
-    return 'User %s' % escape(username)
+@app.route('/getSatellitesFile')
+def prepare_sat():
+    fname = "test_list.txt"
+    data = sl.get_all(fname, debug=True)
+    for i in data:
+        print("\n")
+        sat_id = i['info']['satid']
+        sat_name = i['info']['satname']
+        for j in i['positions']:
+            sat_lat = j['satlatitude']
+            sat_lon = j['satlongitude']
+            sat_alt = j['sataltitude']
+        d = Satellite(sat_id, sat_name, sat_lat, sat_lon, sat_alt)
+        satellite_list.append(d)
 
-@app.route('/post/<int:post_id>')
-def show_post(post_id):
-    # show the post with the given id, the id is an integer
-    return 'Post %d' % post_id
+    '''for i in satellite_list:
+        print("Lista {} {} {} {} {}\n".format(i.id, i.name, i.lat, i.lon, i.alt))'''
 
-@app.route('/path/<path:subpath>')
-def show_subpath(subpath):
-    # show the subpath after /path/
-    return 'Subpath %s' % escape(subpath)
+    return json.dumps(data)
+
+
+''' print("ID: {}, Nome: {}, Latitude: {}, Longitude: {}, Altitude: {}" .format
+    (data[0]['info']['satid'], 
+    data[0]['info']['satname'],
+    data[0]['positions'][0]['satlatitude'],
+    data[0]['positions'][0]['satlongitude'],
+    data[0]['positions'][0]['sataltitude']))'''
