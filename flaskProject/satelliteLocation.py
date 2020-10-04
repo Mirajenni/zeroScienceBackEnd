@@ -30,9 +30,6 @@ BASE_URL = "https://www.n2yo.com/rest/v1/satellite"
 TEMPLATE = "/positions/{id:d}/{observer_lat:.5f}/{observer_lng:.5f}/{observer_alt:2f}/{seconds:d}"
 TEMPLATE2 = "/above/{observer_lat:.5f}/{observer_lng:.5f}/{observer_alt:2f}/{search_radius:d}/0"
 
-@app.route('/')
-def index():
-    return 'Página Login'
 
 def parse_query(params, debug=False):
     " Produce URL from parameter dictionary."
