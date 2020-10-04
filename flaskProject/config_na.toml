@@ -1,0 +1,5 @@
+# Location of METS
+observer_lat = 54.5260
+observer_lng = -105.2551
+observer_alt = 74.042
+search_radius = 5
