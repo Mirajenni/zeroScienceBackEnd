@@ -31,9 +31,6 @@ BASE_URL = "https://www.n2yo.com/rest/v1/satellite/"
 #TEMPLATE = "visualpasses/{id:d}/{observer_lat:.5f}/{observer_lng:.5f}/{observer_alt:2f}/{days:d}/{min_visibility:d}"
 TEMPLATE = "/positions/{id:d}/{observer_lat:.5f}/{observer_lng:.5f}/{observer_alt:2f}/{seconds:d}"
 
-@app.route('/')
-def index():
-    return 'Página Login'
 
 def parse_query(params, debug=False):
     " Produce URL from parameter dictionary."
@@ -85,3 +82,4 @@ def get_all(filename, debug=False):
     IDs = read_ids(filename, debug)
     all_data = [get_single(ID, debug) for ID in IDs]
     return all_data
+
