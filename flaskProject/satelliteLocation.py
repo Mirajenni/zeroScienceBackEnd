@@ -74,7 +74,7 @@ def get_single(ID, debug=False):
     query_params = base_params.copy() #pegou os dados de TOML
     query_params["id"] = ID
     if debug:
-        print("Query parameters:")
+        print("Query parameters:\n")
         pprint(query_params)
     URL = parse_query(query_params, debug)
     data = retrieve_data(URL, debug)
