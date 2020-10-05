@@ -5,4 +5,4 @@ observer_alt = 74.042
 
 # Desired time period and minimum pass duration
 seconds = 1
-search_radius = 5
+search_radius = 50
