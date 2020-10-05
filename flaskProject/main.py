@@ -1,5 +1,5 @@
 from flask import Flask
-import satelliteLocation as sl
+from .satelliteLocation import SatelliteLocation
 import json
 from flask_cors import CORS, cross_origin
 
@@ -8,6 +8,8 @@ cors = CORS(app)
 
 satellite = {}
 satellite_list = [{}]
+
+sl = SatelliteLocation()
 
 app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
 
