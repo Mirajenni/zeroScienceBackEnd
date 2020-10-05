@@ -1,6 +1,4 @@
 flask
-flask-cors
+flask_cors
 requests
 toml
-pprint
-inspect
