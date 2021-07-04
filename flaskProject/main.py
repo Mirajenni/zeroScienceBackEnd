@@ -1,5 +1,5 @@
 from flask import Flask
-import satelliteLocation as sl
+from satelliteLocation import SatelliteLocation
 import json
 from flask_cors import CORS, cross_origin
 
@@ -8,6 +8,8 @@ cors = CORS(app)
 
 satellite = {}
 satellite_list = [{}]
+
+sl = SatelliteLocation()
 
 app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
 
@@ -30,11 +32,7 @@ def prepare_near():
         del i["info"]
         for j in i['above']:
             del j["intDesignator"]
-
-
-    #para acessar:
-    #for i in data:
-    #    for j in i['above']:
-    #        print(j['satid'])
-
     return json.dumps(data)
+
+if __name__ == '__main__':
+    app.run(host= '0.0.0.0')
